@@ -11,26 +11,32 @@ __date__ = '05.09.2019'
 import win32clipboard
 import time
 
-def options():
-    win32clipboard.OpenClipboard()
-    win32clipboard.EmptyClipboard()
-    win32clipboard.SetClipboardText('')
-    win32clipboard.CloseClipboard()
+def clipboard_validation(file):
+    clipboard = win32clipboard
+    clipboard.OpenClipboard()
+    clipboard.EmptyClipboard()
+    clipboard.SetClipboardText('')
+    clipboard.CloseClipboard()
     current_value = ('')
     while True:
-        win32clipboard.OpenClipboard()
-        clipboard_value = win32clipboard.GetClipboardData()
-        win32clipboard.CloseClipboard()
-        if (clipboard_value != current_value):
-            current_value = clipboard_value
-            print("Completed")
-        time.sleep(0.1)
+        clipboard.OpenClipboard()
+        clipboard_value = clipboard.GetClipboardData()
+        clipboard.CloseClipboard()
+        try:
+            if (clipboard_value != current_value):
+                current_value = clipboard_value
+                print("[+] Successful Copy")
+                file.write(current_value)
+            time.sleep(0.1)
+        except Exception as errorMsg:
+            print('[-] Exact error message: ' + str(errorMsg))
 
 def main():
     """
     Begin
     """
-    options()
+    file = open("clipboardlog.txt", "w")
+    clipboard_validation(file)
 
 if __name__ == '__main__':
     main()
