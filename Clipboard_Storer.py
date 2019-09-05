@@ -6,7 +6,7 @@ A simple python script that records all items to the clipboard and stores as tex
 
 __author__ = 'Anthony T Nguyen'
 __version__ = '---'
-__date__ = '16.07.2019'
+__date__ = '05.09.2019'
 
 import win32clipboard
 import time
