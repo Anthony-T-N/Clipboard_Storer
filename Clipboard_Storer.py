@@ -12,6 +12,9 @@ import win32clipboard
 import time
 
 def clipboard_validation(file):
+    """
+    
+    """
     clipboard = win32clipboard
     clipboard.OpenClipboard()
     clipboard.EmptyClipboard()
