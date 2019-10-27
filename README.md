@@ -6,5 +6,7 @@
 
 # Clipboard_Storer
 
+A script that runs in the background and stores anything held in the operating system's clipboard to a text file.
+
 Usage
 -
